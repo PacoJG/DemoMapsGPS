@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -52,16 +53,31 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback, GoogleMap.OnMyLoc
     override fun onMapReady(googleMap: GoogleMap) {
         //este codigo se ejecutara cuando el fragment termine de cargarse
         map = googleMap
-        crearMrker(19.52829336148813,-99.18654127621309, "Punta Palermo")
+
         map.setOnMyLocationButtonClickListener(this)
         map.setOnMyLocationClickListener(this)
 
 
         //tratar de acceder a la ubicación del gps
         enableLocation()
-        findViewById<Button>(R.id.btnRest1).setOnClickListener{
-            Toast.makeText(this,"Esto es el restaurante 1", Toast.LENGTH_SHORT).show()
+        findViewById<ImageView>(R.id.ivRestaurante1).setOnClickListener{
+            Toast.makeText(this,"Italianis", Toast.LENGTH_SHORT).show()
             crearMrker(19.502882697137235, -99.12847994923067,"Italiannis")
+        }
+
+        findViewById<ImageView>(R.id.ivRestaurante2).setOnClickListener{
+            Toast.makeText(this,"Cardenal", Toast.LENGTH_SHORT).show()
+            crearMrker(19.43103870647559, -99.20989094492789,"Cardenal")
+        }
+
+        findViewById<ImageView>(R.id.ivRestaurante3).setOnClickListener{
+            Toast.makeText(this,"El jacal de San Anotonio", Toast.LENGTH_SHORT).show()
+            crearMrker(19.43631152259796, -103.69751644308052,"El jacal de San Antonio")
+        }
+
+        findViewById<ImageView>(R.id.ivRestaurante4).setOnClickListener{
+            Toast.makeText(this,"RosaNegra", Toast.LENGTH_SHORT).show()
+            crearMrker(21.085310496013026, -86.77450741607285,"RosaNegra")
         }
 
     }
@@ -108,12 +124,12 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback, GoogleMap.OnMyLoc
     }
 
     override fun onMyLocationButtonClick(): Boolean {
-        Toast.makeText(this, "Esta es mi ubicación", Toast.LENGTH_SHORT).show()
-        return true
+        Toast.makeText(this, "Tú estas aquí", Toast.LENGTH_SHORT).show()
+        return false
     }
 
     override fun onMyLocationClick(p0: Location) {
-        Toast.makeText(this,"latitud ${p0.latitude} and longitud ${p0.longitude} ", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"Tu ubicación es : latitud ${p0.latitude} and longitud ${p0.longitude} ", Toast.LENGTH_SHORT).show()
     }
 
 }
